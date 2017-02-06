@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.program.dao.RoleFunctionsDao">
+	
+	
+	<resultMap type="java.util.HashMap" id="findRoleFunctionsByModuleResultMap">
+		<result column="module" property="module" />
+		<result column="name" property="text" />
+		<result column="url" property="url" />
+	</resultMap>
+	<select id="findRoleFunctionsByModule" parameterType="String" resultMap="findRoleFunctionsByModuleResultMap">
+		select 
+			rf.`module`,
+			f.`name`,
+			f.`url`
+		from 
+			Role r
+		left join 
+			`role_functions` rf
+		on
+			r.id=rf.`roleId`
+		left join
+			functions f
+		on
+			rf.`functionId`=f.id
+		where 
+			r.id=#{roleId}
+		and
+			rf.`module`=#{module}
+	</select>
+	
+</mapper>

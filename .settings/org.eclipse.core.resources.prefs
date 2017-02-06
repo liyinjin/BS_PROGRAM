@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//WebContent/jsp/insertUser.jsp=UTF-8
+encoding//WebContent/jsp/updatePassword.jsp=UTF-8
+encoding//src/bs/program/controller/UserController.java=UTF-8
+encoding//src/bs/program/dao/UserDao.java=UTF-8
+encoding//src/bs/program/service/UserService.java=UTF-8

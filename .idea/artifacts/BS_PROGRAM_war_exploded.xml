@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BS_PROGRAM:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BS_PROGRAM_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BS_PROGRAM" />
+          <element id="library" level="project" name="BS_PROGRAM" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="BS_PROGRAM/web/Web" />
+    </root>
+  </artifact>
+</component>
