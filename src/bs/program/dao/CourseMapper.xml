@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.program.dao.CourseDao">
+    
+    <parameterMap id="inparam" type="java.util.HashMap">
+        <parameter property="id" javaType="String"/>
+        <parameter property="name" javaType="String"/>
+        <parameter property="allScores" javaType="Double"/>
+    </parameterMap>
+    
+    <select id="selectAllCourse"  resultType="bs.program.bean.Course">
+        SELECT * FROM course
+    </select>
+    
+    <insert id="insertCourse" parameterMap="inparam">
+        INSERT INTO course(id,name,allScores)VALUES(#{id},#{name},#{allScores});
+    </insert>
+
+    <update id="updateCourse" parameterMap="inparam">
+        UPDATE course SET name=#{name},allScores=#{allScores} WHERE id=#{id};
+    </update>
+</mapper>

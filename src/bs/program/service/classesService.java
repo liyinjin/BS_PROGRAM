@@ -19,4 +19,20 @@ public interface classesService {
 	 * @return
 	 */
 	public Integer insertClassess(String id,String name);
+
+	/**
+	 * 删除班级
+	 * @param id
+	 * @return
+	 */
+	public Integer delClassess(String id);
+
+	/**
+	 * 修改班级
+	 * @param id
+	 * @param name
+	 * @return
+	 */
+	public Integer upClasses(String id, String name);
+
 }

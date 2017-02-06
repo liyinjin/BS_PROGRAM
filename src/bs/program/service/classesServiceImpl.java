@@ -1,13 +1,11 @@
 package bs.program.service;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import bs.program.dao.classesDao;
 import org.springframework.stereotype.Service;
 
-import bs.program.dao.classesDao;
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 @Service
 public class classesServiceImpl implements classesService {
 	@Resource
@@ -23,5 +21,16 @@ public class classesServiceImpl implements classesService {
 		// TODO Auto-generated method stub
 		return classesdao.insertClasses(id,name);
 	}
+
+    @Override
+    public Integer delClassess(String id) {
+
+	    return classesdao.delClasses(id);
+    }
+
+    @Override
+    public Integer upClasses(String id, String name) {
+        return classesdao.upClasses(id,name);
+    }
 
 }

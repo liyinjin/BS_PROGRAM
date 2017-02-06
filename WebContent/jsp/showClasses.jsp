@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<script type="text/javascript">
+		var row;
 		function addClasses(){
 			$("#classesWin").window({
 				width:200,
@@ -28,6 +29,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				href:'jsp/insertClasses.jsp'
 			})
 		}
+		function delClasses(){
+
+			row=$("#classesTable").datagrid("getSelected");
+			if(row==null){
+				alert("请选择要删除的用户");
+				return
+			}else {
+			    var url="classes/delClasses";
+			    $.post(url,row,delClassesSuccess);
+			}
+		}
+
+		function delClassesSuccess(data) {
+
+            var json=data.i;
+            if(json==1){
+                alert("删除成功");
+                $("#classesTable").datagrid("reload");
+            }
+        }
+
+        function upClasses(){
+            row=$("#classesTable").datagrid("getSelected");
+            if (row==null){
+                alert("请选择班级");
+                return;
+            }else{
+                $("#classesWin").window({
+                    width:220,
+                    height:220,
+                    href:'jsp/upClasses.jsp'
+                })
+            }
+        }
 	</script>
 	<form action="" id="classesForm" method="post">
 		<table id="classesTable" class="easyui-datagrid" data-options="url:'${pageContext.request.contextPath}/classes/findall',toolbar:'#classttb',singleSelect:true">
@@ -43,9 +78,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<a href="javascript:void(0)" class="easyui-linkbutton" 
 				data-options="iconCls:'icon-add',plain:true" onclick="addClasses();">添加</a>
 			<a href="javascript:void(0)" class="easyui-linkbutton" 
-				data-options="iconCls:'icon-edit',plain:true" onclick="editPassword();">修改</a>
+				data-options="iconCls:'icon-edit',plain:true" onclick="upClasses();">修改</a>
 			<a href="javascript:void(0)" class="easyui-linkbutton" 
-				data-options="iconCls:'icon-cut',plain:true" onclick="delUser();">删除</a>
+				data-options="iconCls:'icon-cut',plain:true" onclick="delClasses();">删除</a>
 	</div>
 	<div id="classesWin"></div>
 </body>

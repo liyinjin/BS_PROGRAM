@@ -1,13 +1,11 @@
 package bs.program.dao;
 
-import java.util.List;
-import java.util.Map;
-
+import bs.program.bean.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
-import bs.program.bean.RoleFunctions;
-import bs.program.bean.User;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public interface UserDao {
@@ -56,7 +54,7 @@ public interface UserDao {
     
    /**
     * 修改密码 
-    * @param userId
+    * @param id
     * @param password
     * @return
     */

@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bs.program.dao.classesDao">
+
 	<select id="selectAll" resultType="bs.program.bean.classes">
 		select * from classes
 	</select>
@@ -9,4 +10,12 @@
 	<insert id="insertClasses" parameterType="String">
 		insert into classes values(#{id},#{name})
 	</insert>
+	
+	<delete id="delClasses" parameterType="String">
+		DELETE FROM classes WHERE id=#{id}
+	</delete>
+
+	<update id="upClasses" parameterType="String">
+		UPDATE classes SET name=#{name} WHERE id=#{id}
+	</update>
 </mapper>
