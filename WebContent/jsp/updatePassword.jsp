@@ -73,7 +73,6 @@
 	</form>
 	<div style="text-align:right;padding:5px">
 		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="updatePassword()" id="submit">保存</a>
-		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clear()">关闭</a>	
 	</div>
 </body>
 </html>

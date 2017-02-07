@@ -128,4 +128,8 @@
 	<select id="findUserByIdddd" parameterType="String" resultMap="byUserId">
 		select * from users where id=#{userId}
 	</select>
+
+	<update id="userUpdatePwd" parameterType="String">
+		UPDATE users SET password=#{password} WHERE id=#{id}
+	</update>
 </mapper>

@@ -60,4 +60,12 @@ public interface UserService {
      * @return
      */
     public List<Map<String,Object>> findUserById(String id);
+
+    /**
+     * 修改个人密码（用户）
+     * @param id
+     * @param password
+     * @return
+     */
+    public Integer userUpdatePwd(String id,String password);
 }

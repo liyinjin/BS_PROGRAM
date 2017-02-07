@@ -96,5 +96,11 @@ public interface UserDao {
      */
     public String selectRole(@Param("id")String id);
 
-
+    /**
+     * 修改个人密码（用户）
+     * @param id
+     * @param password
+     * @return
+     */
+    public Integer userUpdatePwd(@Param("id")String id,@Param("password")String password);
 }

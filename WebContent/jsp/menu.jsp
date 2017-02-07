@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <div class="easyui-accordion" fit="true" id='sideBar'>
 	<c:if test="${sessionScope.roleId=='1'}">
-		<div title="基础数据" data-options="href:'jsp/menuTree.jsp?module=1'"></div>		
 		<div title="基础数据" data-options="href:'jsp/menuTree.jsp?module=1'"></div>
 		<div title="排课管理" data-options="href:'jsp/menuTree.jsp?module=2'"></div>
 		<div title="课程信息" data-options="href:'jsp/menuTree.jsp?module=3'"></div>

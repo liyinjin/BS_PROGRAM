@@ -87,4 +87,9 @@ public class UserServiceImpl implements UserService{
 		List<Map<String,Object>> list=userDao.findUserByIdddd(id);
 		return list;
 	}
+
+	@Override
+	public Integer userUpdatePwd(String id, String password) {
+		return userDao.userUpdatePwd(id,password);
+	}
 }

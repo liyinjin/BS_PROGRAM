@@ -126,4 +126,14 @@ public class UserController {
         List<Map<String,Object>> listarray=userService.findUserById(id);
         return listarray;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/userUpdatePwd")
+    public Map<String,Object> userUpdatePwd(String password,HttpServletRequest request){
+        Map<String, Object> map = new HashMap<String, Object>();
+        User user= (User) request.getSession().getAttribute("user");
+        Integer i=userService.userUpdatePwd(user.getId(),password);
+        map.put("i",i);
+        return map;
+    }
 }
