@@ -35,4 +35,11 @@ public interface CourseDao {
      * @return
      */
     public Integer updateCourse(@Param("id")String id,@Param("name")String name,@Param("allScores")Double allScores);
+
+    /**
+     * s删除课程
+     * @param id
+     * @return
+     */
+    public Integer deleteCourse(@Param("id")String id);
 }

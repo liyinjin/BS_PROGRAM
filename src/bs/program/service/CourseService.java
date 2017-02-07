@@ -31,4 +31,11 @@ public interface CourseService {
      * @return
      */
     public Integer updateCourse(String id,String name,Double allScores);
+
+    /**
+     * 删除课程
+     * @param id
+     * @return
+     */
+    public Integer delCourse(String id);
 }

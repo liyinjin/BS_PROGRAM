@@ -47,6 +47,25 @@
                 })
             }
         }
+        
+        function delCourse() {
+            row=$("#showCourseTable").datagrid("getSelected");
+            if(row==null){
+                alert("请选择要删除的课程");
+                return;
+            }else{
+                var url='course/delCourse';
+                $.post(url,row,delCourseSuccess);
+            }
+        }
+
+        function delCourseSuccess(data) {
+            var json=eval('('+data+')');
+            if(json.i==1){
+                alert("删除课程成功");
+                $("#showCourseTable").datagrid("reload");
+            }
+        }
     </script>
     <form id="showCourseForm" action="" method="post">
         <table id="showCourseTable" class="easyui-datagrid" data-options="url:'/course/selectAll',toolbar:'#coursetb'">

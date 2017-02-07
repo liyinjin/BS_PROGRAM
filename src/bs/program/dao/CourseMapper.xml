@@ -20,4 +20,8 @@
     <update id="updateCourse" parameterMap="inparam">
         UPDATE course SET name=#{name},allScores=#{allScores} WHERE id=#{id};
     </update>
+
+    <delete id="deleteCourse" parameterType="String">
+        DELETE from course WHERE id=#{id};
+    </delete>
 </mapper>

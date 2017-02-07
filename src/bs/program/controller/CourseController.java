@@ -46,4 +46,13 @@ public class CourseController {
         map.put("i",i);
         return map;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/delCourse")
+    public Map<String,Object> delCourse(String id){
+        Map<String,Object> map=new HashMap<String,Object>();
+        Integer i=courseService.delCourse(id);
+        map.put("i",i);
+        return map;
+    }
 }

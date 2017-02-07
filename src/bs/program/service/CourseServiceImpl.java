@@ -28,4 +28,9 @@ public class CourseServiceImpl implements CourseService{
     public Integer updateCourse(String id, String name, Double allScores) {
         return coursedao.updateCourse(id,name,allScores);
     }
+
+    @Override
+    public Integer delCourse(String id) {
+        return coursedao.deleteCourse(id);
+    }
 }
