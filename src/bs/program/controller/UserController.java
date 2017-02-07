@@ -1,21 +1,18 @@
 package bs.program.controller;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import bs.program.bean.User;
+import bs.program.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import bs.program.bean.User;
-import bs.program.service.UserService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 濡傛灉RequestMapping鏀惧湪绫讳笂閭ｄ箞浠栬姹傜殑URL鍦板潃蹇呴』涓虹被鐨凴equestMapping鍔犱笂鏂规硶涓婄殑RequestMapping
@@ -99,7 +96,7 @@ public class UserController {
 
     /**
      * 修改密码
-     * @param userId
+     * @param id
      * @param password
      * @return
      */
@@ -120,5 +117,13 @@ public class UserController {
     	map.put("i", i);
     	return map;
     }
-    
+
+
+    @ResponseBody
+    @RequestMapping(value = "/findUserById")
+    public List<Map<String,Object>> findUserById(String id){
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<Map<String,Object>> listarray=userService.findUserById(id);
+        return listarray;
+    }
 }

@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				idField:'id'
 				
 			});
-// 			$("#userTable").datagrid('reload');
+ 			$("#userTable").datagrid('reload');
 		}
 	</script>
 	<form action="" id="userForm" method="post">

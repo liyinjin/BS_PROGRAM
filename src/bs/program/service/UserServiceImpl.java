@@ -1,14 +1,12 @@
 package bs.program.service;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import bs.program.bean.User;
 import bs.program.dao.UserDao;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -82,5 +80,11 @@ public class UserServiceImpl implements UserService{
 			}
 		}
 		return i3;
+	}
+
+	@Override
+	public List<Map<String,Object>> findUserById(String id) {
+		List<Map<String,Object>> list=userDao.findUserByIdddd(id);
+		return list;
 	}
 }

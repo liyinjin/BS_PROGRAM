@@ -14,13 +14,14 @@ public interface UserDao {
 	 * @return
 	 */
     public List<Map<String, Object>> lists();
-    
+
+    public List<Map<String, Object>> findUserById(@Param("userId")String userId);
     /**
      * 根据ID查询用户
-     * @param userId
+     * @param id
      * @return
      */
-    public User findUserById(@Param("userId")String userId);
+    public List<Map<String, Object>> findUserByIdddd(@Param("userId")String id);
     
     /**
      * 鍒ゆ柇鎵�湁鐢ㄦ埛鐨勮处鍙峰瘑鐮佹槸鍚︾浉绛�     * @return
@@ -94,4 +95,6 @@ public interface UserDao {
      * @return
      */
     public String selectRole(@Param("id")String id);
+
+
 }

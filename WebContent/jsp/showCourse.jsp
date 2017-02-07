@@ -60,8 +60,8 @@
         }
 
         function delCourseSuccess(data) {
-            var json=eval('('+data+')');
-            if(json.i==1){
+            var json=data.i;
+            if(json==1){
                 alert("删除课程成功");
                 $("#showCourseTable").datagrid("reload");
             }

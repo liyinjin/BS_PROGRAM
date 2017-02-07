@@ -53,6 +53,11 @@ public interface UserService {
      * @return
      */
     public Integer delUser(String id);
-    
-    
+
+    /**
+     * 查询个人信息
+     * @param id
+     * @return
+     */
+    public List<Map<String,Object>> findUserById(String id);
 }
