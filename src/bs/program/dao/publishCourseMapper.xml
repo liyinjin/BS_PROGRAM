@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bs.program.dao.publishCourseDao">
+
+    <!--查询要添加的课程-->
+    <select id="selectOldCourse" resultType="bs.program.bean.Course">
+        select * from course
+    </select>
+    <!--查询教室-->
+    <select id="selectOldClassesroom" resultType="bs.program.bean.classesroom">
+        select * from classroom WHERE state=0
+    </select>
+    <!--查询教师-->
+    <select id="selectOldTeacher" resultType="bs.program.bean.User">
+        SELECT
+            *
+        FROM
+            User_Role ur
+        LEFT JOIN
+            users u
+        ON
+            ur.userId=u.id
+        WHERE
+            ur.roleId = '3'
+    </select>
+</mapper>

@@ -5,6 +5,16 @@ public class Course {
 	private String id;
 	private String name;
 	private Double allScores;
+	private Integer person;
+
+	public Integer getPerson() {
+		return person;
+	}
+
+	public void setPerson(Integer person) {
+		this.person = person;
+	}
+
 	public String getId() {
 		return id;
 	}
