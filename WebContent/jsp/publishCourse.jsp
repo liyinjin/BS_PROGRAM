@@ -36,7 +36,6 @@
                     {field:'name',title:'课程名称'},
                     {field:'allScores',title:'课程学分'},
                     {field:'person',title:'上课人数'},
-                    {field:'person',title:'人数'},
                     {field:'opt',title:'操作',
                         formatter:function () {
                             var str='<a href="javascript:void(0)" name="opera" class="editcls" onclick="publishCourse();">发布课程</a>';
@@ -61,7 +60,7 @@
                     title:'发布课程信息完善',
                     width:500,
                     height:300,
-                    href:'jsp/publishCourse.jsp'
+                    href:'jsp/completePublishCourse.jsp'
                 })
             }
         }

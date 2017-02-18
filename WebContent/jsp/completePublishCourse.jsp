@@ -24,6 +24,10 @@
 </head>
 <body>
     <script>
+        $(function () {
+            var r=$("#classesRoomForm").form().form("load",row);
+            console.log(1);
+        })
         $(document).ready(function () {
             $("#classesRoomTable").datagrid({
                 border:false,
@@ -48,10 +52,44 @@
                 }
             });
         });
+
+
+        function insertCourseClassroom() {
+            var r=$("#classesRoomForm").form().form("load",row);
+            console.log(r);
+            var c=$("#classesRoomTable").datagrid("getSelected");
+            var i=document.getElementById("inp");
+            alert(1);
+            $.ajax({
+                type:'post',
+                url:"publish/insertCourseClassroom",
+                data:{'id':i.value,'classroomId':c.classroomId},
+                dataType:'json',
+                success:function(data){
+                    var json=eval('('+data+')');
+                    if(json.i==1){
+                        alert("添加教室成功");
+                        $("#publishWin").window("close");
+                    }
+                }
+            })
+        }
     </script>
     <form id="classesRoomForm" action="" method="post">
-        <table id="classesRoomTable" class="easyui-datagrid">
-        </table>
+       <table>
+           <div>
+               <table>
+                   <tr>
+                       <td>课程编号</td>
+                       <td><input type="text" id="inp" name="id"></td>
+                   </tr>
+               </table>
+           </div>
+           <div>
+               <table id="classesRoomTable" class="easyui-datagrid">
+               </table>
+           </div>
+       </table>
     </form>
 </body>
 </html>

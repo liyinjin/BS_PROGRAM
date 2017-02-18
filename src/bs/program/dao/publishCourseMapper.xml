@@ -3,6 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bs.program.dao.publishCourseDao">
 
+    <parameterMap id="incc" type="java.util.HashMap">
+        <parameter property="id" javaType="String"/>
+        <parameter property="classroomId" javaType="Integer"/>
+    </parameterMap>
+
     <!--查询要添加的课程-->
     <select id="selectOldCourse" resultType="bs.program.bean.Course">
         select * from course
@@ -24,4 +29,11 @@
         WHERE
             ur.roleId = '3'
     </select>
+
+    <insert id="insertCourseClassroom" parameterMap="incc">
+        INSERT INTO
+            course_classesroom (courseId,classroomId)
+        VALUES
+            (#{id},#{classroomId});
+    </insert>
 </mapper>

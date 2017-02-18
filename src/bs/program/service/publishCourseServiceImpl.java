@@ -15,6 +15,7 @@ public class publishCourseServiceImpl implements publishCourseService {
 
     @Resource
     public publishCourseDao publishcoursedao;
+
     @Override
     public List<Map<String, Object>> selectOldCourse() {
         return publishcoursedao.selectOldCourse();
@@ -23,5 +24,10 @@ public class publishCourseServiceImpl implements publishCourseService {
     @Override
     public List<Map<String, Object>> selectOldClassesroom() {
         return publishcoursedao.selectOldClassesroom();
+    }
+
+    @Override
+    public Integer insertCourseClassroom(String id, Integer classroomId) {
+        return publishcoursedao.insertCourseClassroom(id,classroomId);
     }
 }

@@ -8,6 +8,15 @@ public class classesroom {
     private String classroomName;
     private String time;
     private String learnDay;
+    private Integer state;
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
 
     public Integer getClassroomId() {
         return classroomId;

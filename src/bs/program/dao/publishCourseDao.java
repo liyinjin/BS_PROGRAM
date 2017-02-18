@@ -30,6 +30,13 @@ public interface publishCourseDao {
     public List<Map<String,Object>> selectOldTeacher();
 
     /**
+     * 给要发布的课程添加教室
+     * @param id
+     * @param classroomId
+     * @return
+     */
+    public Integer insertCourseClassroom(@Param("id")String id,@Param("classroomId")Integer classroomId);
+    /**
      *
      * @param id
      * @param courseId

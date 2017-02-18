@@ -19,4 +19,12 @@ public interface publishCourseService {
      * @return
      */
     public List<Map<String,Object>> selectOldClassesroom();
+
+    /**
+     * 给要发布的课程添加教室
+     * @param id
+     * @param classroomId
+     * @return
+     */
+    public Integer insertCourseClassroom(String id,Integer classroomId);
 }
