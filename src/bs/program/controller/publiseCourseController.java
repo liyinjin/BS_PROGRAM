@@ -33,6 +33,14 @@ public class publiseCourseController {
         return list;
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = "/showTeacher")
+    public List<Map<String,Object>> showTeacher(){
+        List<Map<String,Object>> list=publishCourseService.selectOldTeacher();
+        return list;
+    }
+
     /**
      * 给要发布的课程添加教室
      * @param id
@@ -44,6 +52,21 @@ public class publiseCourseController {
     public Map<String,Object> insertCourseClassroom(String id,Integer classroomId){
         Map<String,Object> map=new HashMap<String,Object>();
         Integer i=publishCourseService.insertCourseClassroom(id,classroomId);
+        map.put("i",i);
+        return map;
+    }
+
+    /**
+     * 给要发布的课程添加教室
+     * @param id
+     * @param teacherId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/insertCourseTeacher")
+    public Map<String,Object> insertCourseTeacher(String id,String teacherId){
+        Map<String,Object> map=new HashMap<String,Object>();
+        Integer i=publishCourseService.insertCourseTeacher(id,teacherId);
         map.put("i",i);
         return map;
     }

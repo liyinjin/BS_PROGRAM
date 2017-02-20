@@ -30,4 +30,14 @@ public class publishCourseServiceImpl implements publishCourseService {
     public Integer insertCourseClassroom(String id, Integer classroomId) {
         return publishcoursedao.insertCourseClassroom(id,classroomId);
     }
+
+    @Override
+    public Integer insertCourseTeacher(String id, String teacherId) {
+        return publishcoursedao.insertCourseTeacher(id,teacherId);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectOldTeacher() {
+        return publishcoursedao.selectOldTeacher();
+    }
 }

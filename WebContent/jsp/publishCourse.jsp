@@ -36,16 +36,23 @@
                     {field:'name',title:'课程名称'},
                     {field:'allScores',title:'课程学分'},
                     {field:'person',title:'上课人数'},
-                    {field:'opt',title:'操作',
+                    {field:'opt',title:'上课地点',
                         formatter:function () {
-                            var str='<a href="javascript:void(0)" name="opera" class="editcls" onclick="publishCourse();">发布课程</a>';
+                            var str='<a href="javascript:void(0)" name="opera" class="editcls" onclick="publishCourse();">添加教室</a>';
                             return str;
+                        }
+                    },
+                    {field:'tpt',title:'任课教师',
+                        formatter:function () {
+                            var str1='<a href="javascript:void(0)" name="opera" class="ttt" onclick="publishCourseTeacher();">添加教师</a>';
+                            return str1;
                         }
                     }
 
                 ]],
                 onLoadSuccess:function(data){
-                    $('.editcls').linkbutton({text:'发布课程',plain:true,iconCls:'icon-add'});
+                    $('.editcls').linkbutton({text:'添加教室',plain:true,iconCls:'icon-add'});
+                    $('.ttt').linkbutton({text:'添加教师',plain:true,iconCls:'icon-add'});
                 }
             });
         });
@@ -61,6 +68,21 @@
                     width:500,
                     height:300,
                     href:'jsp/completePublishCourse.jsp'
+                })
+            }
+        }
+
+        function publishCourseTeacher() {
+            row=$("#publishTable").datagrid("getSelected");
+            if (row==null){
+                alert("请选择要发布的课程");
+                return;
+            }else {
+                $("#publishWin").window({
+                    title:'发布课程信息完善',
+                    width:500,
+                    height:300,
+                    href:'jsp/completePublishCourse1.jsp'
                 })
             }
         }

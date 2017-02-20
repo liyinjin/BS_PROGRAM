@@ -36,4 +36,12 @@
         VALUES
             (#{id},#{classroomId});
     </insert>
+
+    <insert id="insertCourseTeacher" parameterType="String">
+        INSERT INTO
+            teacher_course (teacherId,courseId)
+        VALUES
+            (#{teacherId},#{id});
+    </insert>
+
 </mapper>

@@ -36,12 +36,12 @@ public interface publishCourseDao {
      * @return
      */
     public Integer insertCourseClassroom(@Param("id")String id,@Param("classroomId")Integer classroomId);
+
     /**
-     *
+     * 给要发布的课程添加教师
      * @param id
-     * @param courseId
-     * @param course_num
+     * @param teacherId
      * @return
      */
-    public Integer insertClasses(@Param("id")String id,@Param("courseId")String courseId,@Param("course_num")String course_num);
+    public Integer insertCourseTeacher(@Param("id")String id,@Param("teacherId")String teacherId);
 }

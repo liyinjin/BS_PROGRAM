@@ -47,9 +47,7 @@
                         }
                     }
                 ]],
-                onloadSuccess:function () {
-                    $("#bu").linkbutton({text:'确定',plain:true,iconCls:'icon-add'});
-                }
+
             });
         });
 
@@ -64,10 +62,9 @@
                 type:'post',
                 url:"publish/insertCourseClassroom",
                 data:{'id':i.value,'classroomId':c.classroomId},
-                dataType:'json',
                 success:function(data){
-                    var json=eval('('+data+')');
-                    if(json.i==1){
+                    var json=data.i;
+                    if(json==1){
                         alert("添加教室成功");
                         $("#publishWin").window("close");
                     }

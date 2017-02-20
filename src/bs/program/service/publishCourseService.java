@@ -27,4 +27,18 @@ public interface publishCourseService {
      * @return
      */
     public Integer insertCourseClassroom(String id,Integer classroomId);
+
+    /**
+     * 给要发布的课程添加教师
+     * @param id
+     * @param teacherId
+     * @return
+     */
+    public Integer insertCourseTeacher(String id,String teacherId);
+
+    /**
+     * 查询已有教师
+     * @return
+     */
+    public List<Map<String,Object>> selectOldTeacher();
 }
