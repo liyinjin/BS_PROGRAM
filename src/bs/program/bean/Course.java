@@ -6,6 +6,15 @@ public class Course {
 	private String name;
 	private Double allScores;
 	private Integer person;
+	private Integer state;
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
 
 	public Integer getPerson() {
 		return person;

@@ -3,10 +3,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bs.program.dao.publishCourseDao">
 
+    <resultMap id="scc" type="java.util.HashMap">
+        <result column="id" property="id" javaType="String"/>
+        <result column="courseId" property="courseId" javaType="String"/>
+        <result column="teacherId" property="teacherId" javaType="String"/>
+    </resultMap>
     <parameterMap id="incc" type="java.util.HashMap">
         <parameter property="id" javaType="String"/>
         <parameter property="classroomId" javaType="Integer"/>
     </parameterMap>
+
 
     <!--查询要添加的课程-->
     <select id="selectOldCourse" resultType="bs.program.bean.Course">
@@ -44,4 +50,35 @@
             (#{teacherId},#{id});
     </insert>
 
+    <update id="updateCourseState" parameterType="String">
+      UPDATE
+          course
+      SET
+          state = 1
+      WHERE
+          id = #{id};
+    </update>
+
+    <select id="selectSingleCourse" parameterType="String" resultMap="scc">
+        SELECT
+          c.id,
+          cc.classroomId,
+	      tc.teacherId
+        FROM
+          course c
+        LEFT JOIN
+          course_classesroom cc
+	    ON
+	      c.id=cc.courseId
+	    LEFT JOIN
+	      teacher_course tc
+	    ON
+	      c.id=tc.courseId
+	    WHERE
+           c.id=#{id};
+    </select>
+
+    <select id="selectAlReadyPublishCourse" resultType="bs.program.bean.Course">
+        SELECT * from course WHERE state=1
+    </select>
 </mapper>

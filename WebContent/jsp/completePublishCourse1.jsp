@@ -31,6 +31,7 @@
     });
 
     $(document).ready(function () {
+
         $("#teacherTable").datagrid({
             border:false,
             fitColumns:true,
@@ -62,7 +63,7 @@
             $.ajax({
                 type:'post',
                 url:'publish/insertCourseTeacher',
-                data:{'id':ii.value,'teacherId':.id},
+                data:{'id':ii.value,'teacherId':r.id},
                 success:function (data) {
                     var json=data.i;
                     if (json==1){

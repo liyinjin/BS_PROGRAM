@@ -40,4 +40,14 @@ public class publishCourseServiceImpl implements publishCourseService {
     public List<Map<String, Object>> selectOldTeacher() {
         return publishcoursedao.selectOldTeacher();
     }
+
+    @Override
+    public Integer updateCourseState(String id) {
+        return publishcoursedao.updateCourseState(id);
+    }
+
+    @Override
+    public List<Map<String,Object>> selectAlReadyPublishCourse() {
+        return publishcoursedao.selectAlReadyPublishCourse();
+    }
 }

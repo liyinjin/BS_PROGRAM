@@ -47,6 +47,12 @@
                             var str1='<a href="javascript:void(0)" name="opera" class="ttt" onclick="publishCourseTeacher();">添加教师</a>';
                             return str1;
                         }
+                    },
+                    {field:'insert',title:'发布',
+                        formatter:function () {
+                            var ssttrr='<button id="buu" type="button" onclick="publishCc();">确定</button>';
+                            return ssttrr;
+                        }
                     }
 
                 ]],
@@ -85,6 +91,26 @@
                     href:'jsp/completePublishCourse1.jsp'
                 })
             }
+        }
+
+        function publishCc(){
+            var pp=$("#publishTable").datagrid("getSelected");
+            if(pp==null){
+                alert("请选择要发布的课程");
+            }
+            $.ajax({
+                type:'post',
+                url:'publish/publishCourseComplete',
+                data:{'id':pp.id},
+                success:function (data) {
+                    var json=data.i;
+                    if(json==1){
+                        alert("发布成功");
+                    }else{
+                        alert("发布失败");
+                    }
+                }
+            })
         }
     </script>
     <form id="publishCourseForm" action="" method="post">

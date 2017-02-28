@@ -1,5 +1,6 @@
 package bs.program.controller;
 
+import bs.program.dao.publishCourseDao;
 import bs.program.service.publishCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ import java.util.Map;
 public class publiseCourseController {
     @Autowired
     public publishCourseService publishCourseService;
+
+    @Autowired
+    public publishCourseDao publishcoursedao;
 
     @ResponseBody
     @RequestMapping(value = "/showCourse")
@@ -69,5 +73,29 @@ public class publiseCourseController {
         Integer i=publishCourseService.insertCourseTeacher(id,teacherId);
         map.put("i",i);
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/publishCourseComplete")
+    public Map<String,Object> publishCourseComplete(String id){
+        Map<String,Object> smap=new HashMap<String,Object>();
+        Map<String,Object> map=publishcoursedao.selectSingleCourse(id);
+        Integer i;
+        if (map.get("classroomId")!=null && map.get("teacherId")!=null){
+            i=publishCourseService.updateCourseState(id);
+            smap.put("i",i);
+            return smap;
+        }else{
+            i=0;
+            smap.put("i",i);
+            return smap;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/selectAlReadyPublishCourse")
+    public List<Map<String,Object>> selectAlReadyPublishCourse(){
+        List<Map<String,Object>> smap=publishCourseService.selectAlReadyPublishCourse();
+        return smap;
     }
 }

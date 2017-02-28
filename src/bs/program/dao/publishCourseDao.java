@@ -44,4 +44,24 @@ public interface publishCourseDao {
      * @return
      */
     public Integer insertCourseTeacher(@Param("id")String id,@Param("teacherId")String teacherId);
+
+    /**
+     * 发布课程
+     * @param id
+     * @return
+     */
+    public Integer updateCourseState(@Param("id")String id);
+
+    /**
+     * 查询该课程是否发布完毕
+     * @param id
+     * @return
+     */
+    public Map<String,Object> selectSingleCourse(@Param("id")String id);
+
+    /**
+     * 查看已发布的课程
+     * @return
+     */
+    public List<Map<String,Object>> selectAlReadyPublishCourse();
 }

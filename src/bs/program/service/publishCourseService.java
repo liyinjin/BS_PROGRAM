@@ -41,4 +41,17 @@ public interface publishCourseService {
      * @return
      */
     public List<Map<String,Object>> selectOldTeacher();
+
+    /**
+     * 发布课程
+     * @param id
+     * @return
+     */
+    public Integer updateCourseState(String id);
+
+    /**
+     * 查看已发布的课程
+     * @return
+     */
+    public List<Map<String,Object>> selectAlReadyPublishCourse();
 }
