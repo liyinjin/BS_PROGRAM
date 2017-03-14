@@ -38,4 +38,12 @@ public interface CourseService {
      * @return
      */
     public Integer delCourse(String id);
+
+    /**
+     * 学生选课
+     * @param userId
+     * @param courseId
+     * @return
+     */
+    public Integer insertStudentCourse(String userId,String courseId);
 }

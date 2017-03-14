@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </span>
     </div>
     <div class="btn-group">
-      <span>修改密码</span>
+      <span onclick="javascript:location.href='updatePassword.jsp'">修改密码</span>
       <span onclick="javascript:location.href='login.html'">退出登录</span>
     </div>
   </div>

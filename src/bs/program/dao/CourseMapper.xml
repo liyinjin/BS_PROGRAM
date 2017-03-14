@@ -8,7 +8,11 @@
         <parameter property="name" javaType="String"/>
         <parameter property="allScores" javaType="Double"/>
     </parameterMap>
-    
+
+    <resultMap id="smapp" type="java.util.HashMap">
+        <result column="id" property="id" javaType="String"/>
+        <result column="name" property="name" javaType="String"/>
+    </resultMap>
     <select id="selectAllCourse"  resultType="bs.program.bean.Course">
         SELECT * FROM course
     </select>
@@ -24,4 +28,12 @@
     <delete id="deleteCourse" parameterType="String">
         DELETE from course WHERE id=#{id};
     </delete>
+
+    <insert id="insertStudentCourse" parameterType="String">
+        INSERT INTO student_course(studentId,teacherCourseId)VALUES (#{userId},#{courseId})
+    </insert>
+
+    <select id="checkAlreadyStudentCourse" parameterType="String" resultMap="smapp">
+
+    </select>
 </mapper>

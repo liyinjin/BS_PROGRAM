@@ -42,4 +42,19 @@ public interface CourseDao {
      * @return
      */
     public Integer deleteCourse(@Param("id")String id);
+
+    /**
+     * 学生选课
+     * @param userId
+     * @param courseId
+     * @return
+     */
+    public Integer insertStudentCourse(@Param("userId")String userId,@Param("courseId")String courseId);
+
+    /**
+     * 查询学生已选课程
+     * @param userId
+     * @return
+     */
+    public Map<String,Object> checkAlreadyStudentCourse(@Param("userId")String userId);
 }
