@@ -13,6 +13,15 @@
         <parameter property="classroomId" javaType="Integer"/>
     </parameterMap>
 
+    <resultMap id="rmsa" type="java.util.HashMap">
+        <result column="id" property="id" javaType="String"/>
+        <result column="name" property="name" javaType="String"/>
+        <result column="classroomName" property="classroomName" javaType="String"/>
+        <result column="learnDay" property="learnDay" javaType="String"/>
+        <result column="time" property="time" javaType="String"/>
+        <result column="allScores" property="allScores" javaType="Integer"/>
+        <result column="userName" property="userName" javaType="String"/>
+    </resultMap>
 
     <!--查询要添加的课程-->
     <select id="selectOldCourse" resultType="bs.program.bean.Course">
@@ -78,7 +87,24 @@
            c.id=#{id};
     </select>
 
-    <select id="selectAlReadyPublishCourse" resultType="bs.program.bean.Course">
-        SELECT * from course WHERE state=1
+    <select id="selectAlReadyPublishCourse" resultMap="rmsa">
+        SELECT
+            c.id ,
+            c. NAME ,
+            c.person,
+            c.surplusPerson,
+            cl.classroomName ,
+            cl.learnDay ,
+            cl.time ,
+            c.allScores ,
+            u.userName
+        FROM
+            course c
+        LEFT JOIN course_classesroom cc ON c.id = cc.courseId
+        LEFT JOIN classroom cl ON cc.classroomId = cl.classroomId
+        LEFT JOIN teacher_course tc ON c.id = tc.courseId
+        LEFT JOIN users u ON tc.teacherId = u.id
+        WHERE
+            c.state = 1
     </select>
 </mapper>

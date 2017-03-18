@@ -9,9 +9,25 @@
         <parameter property="allScores" javaType="Double"/>
     </parameterMap>
 
+    <parameterMap id="pm" type="java.util.HashMap">
+        <parameter property="courseId" javaType="String"/>
+        <parameter property="person" javaType="Integer"/>
+    </parameterMap>
+
+
+    <resultMap id="rq" type="java.util.HashMap">
+        <result column="allScores" property="allScores" javaType="Integer"/>
+    </resultMap>
+
     <resultMap id="smapp" type="java.util.HashMap">
         <result column="id" property="id" javaType="String"/>
         <result column="name" property="name" javaType="String"/>
+        <result column="allScores" property="allScores" javaType="String"/>
+        <result column="classroomId" property="classroomId" javaType="Integer"/>
+        <result column="classroomName" property="classroomName" javaType="String"/>
+        <result column="learnDay" property="learnDay" javaType="String"/>
+        <result column="time" property="time" javaType="String"/>
+        <result column="userName" property="userName" javaType="String"/>
     </resultMap>
     <select id="selectAllCourse"  resultType="bs.program.bean.Course">
         SELECT * FROM course
@@ -33,7 +49,42 @@
         INSERT INTO student_course(studentId,teacherCourseId)VALUES (#{userId},#{courseId})
     </insert>
 
-    <select id="checkAlreadyStudentCourse" parameterType="String" resultMap="smapp">
+    <select id="selectCourseSurplusPerson" parameterType="String" resultType="Integer">
+        select surplusPerson FROM course WHERE id=#{courseId}
+    </select>
 
+    <update id="updateCourseSurplusPerson" parameterMap="pm">
+        UPDATE course SET surplusPerson=#{person} WHERE id=#{courseId}
+    </update>
+
+
+    <delete id="deleteStudentCourse" parameterType="String">
+        DELETE FROM student_course WHERE studentId=#{userId} AND teacherCourseId=#{courseId}
+    </delete>
+
+
+    <select id="checkAlreadyStudentCourse" parameterType="String" resultMap="smapp">
+        SELECT
+            co.id,
+            co.`name`,
+            co.allScores,
+            cc.classroomId,
+            cr.classroomName,
+            cr.learnDay,
+            cr.time,
+            u.userName
+        FROM
+            student_course sc
+        LEFT JOIN `teacher_course` tc ON sc.teacherCourseId = tc.courseId
+        LEFT JOIN users u ON tc.teacherId = u.id
+        LEFT JOIN course co ON tc.courseId = co.id
+        LEFT JOIN course_classesroom cc ON co.id = cc.courseId
+        LEFT JOIN classroom cr ON cc.classroomId=cr.classroomId
+        WHERE
+            sc.studentId = #{userId}
+    </select>
+
+    <select id="queryScores" parameterType="String" resultMap="rq">
+        select DISTINCT c.name,c.allScores from student_course sc left join course c on c.id=sc.teacherCourseId WHERE sc.studentId=#{userId}
     </select>
 </mapper>

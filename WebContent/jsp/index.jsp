@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</script>
   <div data-options="region:'north',border:false" class="header">
     <div class="logo">
-      <img src="img/timg.jpg">
+      <img src="img/123.jpeg">
       <span>
         学生选课系统
       </span>
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div data-options="region:'west',split:true,title:'系统功能',href:'jsp/menu.jsp'" style="width:150px;"></div>
   <div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
   <div data-options="region:'south',border:false" class="footer" style="height:40px;line-height:40px;">
-    学生管理系统
+    学生选课系统
   </div>
   <div data-options="region:'center'">
     <div class="easyui-tabs" id="maintabs" fit="true"></div>

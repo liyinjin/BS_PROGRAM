@@ -46,4 +46,26 @@ public interface CourseService {
      * @return
      */
     public Integer insertStudentCourse(String userId,String courseId);
+
+    /**
+     * 查询学生已选课程
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> checkAlreadyStudentCourse(String userId);
+
+    /**
+     * 删除已学生已选课程
+     * @param courseId
+     * @param userId
+     * @return
+     */
+    public Integer deleteStudentCourse(String courseId,String userId);
+
+    /**
+     * 查询学分
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> queryScores(String userId);
 }

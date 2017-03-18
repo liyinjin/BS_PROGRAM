@@ -68,8 +68,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 queryParams: {
 					 roleId: value
 					},
-				idField:'id'
-				
+				idField:'id',
+                fitColumns:false,//自适应宽度，占满,不能和冻结列同时设置成true
+                striped:true,   //斑马线效果
+                idField:'sno',    //主键列
+                rownumbers:true,            //显示行号
+                singleSelect:true,          //是否单选
+                pagination:true,
+                pageList:[5,10],//每页行数选择列表
+                pageSize:5, //设置默认初始的每页行数rows
+                pageNumber:1,//设置默认初始的页码page
+                remoteSort:false,    //是否服务器端排序，设成false才可以在页面进行排序
+                //sortName:'sname', //指定列名可以进行排序
+                multiSort:true
 			});
  			$("#userTable").datagrid('reload');
 		}
@@ -81,7 +92,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th data-options="field:'id'">账户</th>
 					<th data-options="field:'password'">密码</th>
 					<th data-options="field:'userName'">姓名</th>
-					<th data-options="field:'name'">角色</th>
 				</tr>
 			</thead>
 		</table>
@@ -103,6 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="javascript:void(0)" class="easyui-linkbutton" 
 			data-options="iconCls:'icon-cut',plain:true" onclick="delUser();">删除</a>
 	</div>
+
 <div id="PortWin"></div>
 </body>
 </html>

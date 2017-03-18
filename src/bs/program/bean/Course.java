@@ -7,6 +7,15 @@ public class Course {
 	private Double allScores;
 	private Integer person;
 	private Integer state;
+	private Integer surplusPerson;
+
+	public Integer getSurplusPerson() {
+		return surplusPerson;
+	}
+
+	public void setSurplusPerson(Integer surplusPerson) {
+		this.surplusPerson = surplusPerson;
+	}
 
 	public Integer getState() {
 		return state;

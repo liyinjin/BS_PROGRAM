@@ -1,6 +1,7 @@
 package bs.program.controller;
 
 import bs.program.bean.User;
+import bs.program.dao.CourseDao;
 import bs.program.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class CourseController {
 
     @Autowired
     public CourseService courseService;
+    @Autowired
+    public CourseDao courseDao;
 
     @ResponseBody
     @RequestMapping(value = "/selectAll")
@@ -72,7 +75,46 @@ public class CourseController {
         user=(User) request.getSession().getAttribute("user");
         String userId=user.getId();
         Integer i=courseService.insertStudentCourse(userId,courseId);
+        if(i==1){
+            Integer person=courseDao.selectCourseSurplusPerson(courseId)-1;
+            Integer ii=courseDao.updateCourseSurplusPerson(courseId,person);
+            map.put("i",i);
+            map.put("ii",ii);
+            return map;
+        }
+        return map;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/checkAlreadyStudentCourse")
+    public List<Map<String,Object>> checkAlreadyStudentCourse(HttpServletRequest request){
+        User user= (User) request.getSession().getAttribute("user");
+        List<Map<String,Object>> map =courseService.checkAlreadyStudentCourse(user.getId());
+        return map;
+    }
+
+    /**
+     * 删除已学生已选课程
+     * @param courseId
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/deleteStudentCourse")
+    public Map<String,Object> deleteStudentCourse(String courseId,HttpServletRequest request){
+        Map<String,Object> map=new HashMap<>();
+        User user= (User) request.getSession().getAttribute("user");
+        Integer i=courseService.deleteStudentCourse(courseId,user.getId());
         map.put("i",i);
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value ="/queryScores")
+    public List<Map<String,Object>> queryScores(HttpServletRequest request){
+        User user=(User)request.getSession().getAttribute("user");
+        List<Map<String,Object>> list=courseService.queryScores(user.getId());
+        return list;
     }
 }

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: liyingjin
-  Date: 2017/3/14
-  Time: 下午5:09
+  Date: 2017/3/15
+  Time: 下午3:37
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,8 +13,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>选课</title>
-    <title>修改班级信息</title>
+    <title>已选课程</title>
     <link rel="stylesheet" type="text/css" href="js/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="js/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="js/demo.css">
@@ -24,59 +23,56 @@
     </script>
 </head>
 <body>
+
     <script>
         $(document).ready(function () {
-            $("#studentCourseTable").datagrid({
+            $("#checkCourseTable").datagrid({
                 border:false,
                 fitColumns:true,
                 singleSelect:true,
-                url:'publish/selectAlReadyPublishCourse',
+                url:'course/checkAlreadyStudentCourse',
                 columns:[[
                     {field:'id',title:'课程编号'},
                     {field:'name',title:'课程名称'},
-                    {field:'classroomName',title:'上课地址'},
+                    {field:'allScores',title:'学分'},
+                    {field:'classroomName',title:'教室'},
                     {field:'learnDay',title:'上课日期'},
                     {field:'time',title:'上课时间'},
-                    {field:'allScores',title:'学分'},
-                    {field:'person',title:'上课人数'},
-                    {field:'surplusPerson',title:'课程剩余量'},
                     {field:'userName',title:'任课教师'},
-                    {field:'oc',title:'选择',
+                    {field:'tt',title:'删除已选课程',
                         formatter:function () {
-                            var stttr='<button id="but" type="button" onclick="insertStudentCourse();">确定</button>';
-                            return stttr;
+                            var srr='<button id="but" type="button" onclick="delStudentCourse();">确定</button>';
+                            return srr;
                         }
                     }
                 ]]
-            })
+            });
         })
 
-        function insertStudentCourse(){
-            var w=$("#studentCourseTable").datagrid("getSelected");
-            if(w==null){
-                alert("请选择课程");
-                return;
-            }else {
+        function delStudentCourse() {
+            var aa=$("#checkCourseTable").datagrid("getSelected");
+            if (aa==null){
+                alert("请选择要删除的已选课程");
+            }else{
+                var da=$("#checkCourseTable").datagrid("getSelected");
                 $.ajax({
                     type:'post',
-                    url:'course/insertStudentCourse',
-                    data:{'courseId':w.id},
+                    url:'course/deleteStudentCourse',
+                    data:{'courseId':da.id},
                     success:function (data) {
                         var json=data.i;
                         if(json==1){
-                            alert("选课成功");
-                        }else {
-                            alert("选课失败");
+                            alert("删除成功");
+                            $("#checkCourseTable").datagrid("reload");
+                            $("#studentCourseTable").datagrid("reload");
                         }
                     }
                 })
             }
         }
     </script>
-    <form action="" id="studentCourseForm" method="post">
-        <table id="studentCourseTable">
-            <thead>
-            </thead>
+    <form action="" id="checkCourseForm" method="post">
+        <table id="checkCourseTable">
         </table>
     </form>
 </body>

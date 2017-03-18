@@ -56,5 +56,35 @@ public interface CourseDao {
      * @param userId
      * @return
      */
-    public Map<String,Object> checkAlreadyStudentCourse(@Param("userId")String userId);
+    public List<Map<String,Object>> checkAlreadyStudentCourse(@Param("userId")String userId);
+
+    /**
+     * 查询学生已选课程剩余人数
+     * @param courseId
+     * @return
+     */
+    public Integer selectCourseSurplusPerson(@Param("courseId")String courseId);
+
+    /**
+     * 修改已选课程剩余人数
+     * @param courseId
+     * @param person
+     * @return
+     */
+    public Integer updateCourseSurplusPerson(@Param("courseId")String courseId,@Param("person")Integer person);
+
+    /**
+     * 删除已学生已选课程
+     * @param courseId
+     * @param userId
+     * @return
+     */
+    public Integer deleteStudentCourse(@Param("courseId")String courseId,@Param("userId")String userId);
+
+    /**
+     * 查询学分
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> queryScores(@Param("userId")String userId);
 }

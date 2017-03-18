@@ -37,4 +37,32 @@ public class CourseServiceImpl implements CourseService{
     public Integer insertStudentCourse(String userId, String courseId) {
         return coursedao.insertStudentCourse(userId,courseId);
     }
+
+    @Override
+    public List<Map<String,Object>> checkAlreadyStudentCourse(String userId) {
+        return coursedao.checkAlreadyStudentCourse(userId);
+    }
+
+    @Override
+    public Integer deleteStudentCourse(String courseId, String userId) {
+        Integer in=coursedao.selectCourseSurplusPerson(courseId);
+        Integer person=in+1;
+        Integer inte=coursedao.updateCourseSurplusPerson(courseId,person);
+        Integer i = null;
+        if (inte==1){
+            i=coursedao.deleteStudentCourse(courseId,userId);
+            return i;
+        }
+        return i;
+    }
+
+    /**
+     * 查询学分
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Map<String, Object>> queryScores(String userId) {
+        return coursedao.queryScores(userId);
+    }
 }
