@@ -136,4 +136,25 @@ public class UserController {
         map.put("i",i);
         return map;
     }
+
+    /**
+     * 查询学生任课教师
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/selectTeacherSubject")
+    public List<Map<String,Object>> selectTeacherSubject(HttpServletRequest request){
+        User user=(User)request.getSession().getAttribute("user");
+        List<Map<String,Object>> list=userService.selectTeacherSubject(user.getId());
+        return list;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/selectTeacherStudent")
+    public List<Map<String,Object>> selectTeacherStudent(HttpServletRequest request){
+        User user=(User)request.getSession().getAttribute("user");
+        List<Map<String,Object>> list=userService.selectTeacherStudent(user.getId());
+        return list;
+    }
 }

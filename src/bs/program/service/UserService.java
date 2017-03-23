@@ -1,11 +1,10 @@
 package bs.program.service;
 
-import java.util.List;
-import java.util.Map;
-
+import bs.program.bean.User;
 import org.apache.ibatis.annotations.Param;
 
-import bs.program.bean.User;
+import java.util.List;
+import java.util.Map;
 
 
 public interface UserService {
@@ -41,7 +40,7 @@ public interface UserService {
 
     /**
      * 修改密码
-     * @param userId
+     * @param id
      * @param password
      * @return
      */
@@ -68,4 +67,18 @@ public interface UserService {
      * @return
      */
     public Integer userUpdatePwd(String id,String password);
+
+    /**
+     * 查询学生任课教师
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> selectTeacherSubject(String userId);
+
+    /**
+     *查询教师自己课程选课学生
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> selectTeacherStudent(String userId);
 }

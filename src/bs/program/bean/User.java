@@ -11,6 +11,15 @@ public class User {
 	private Date createDate;
 	private String className;
 	private String subject;
+	private String phone;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 	public String getSubject() {
 		return subject;

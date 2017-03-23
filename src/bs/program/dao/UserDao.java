@@ -103,4 +103,18 @@ public interface UserDao {
      * @return
      */
     public Integer userUpdatePwd(@Param("id")String id,@Param("password")String password);
+
+    /**
+     * 查询学生任课教师
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> selectTeacherSubject(@Param("userId")String userId);
+
+    /**
+     *查询教师自己课程选课学生
+     * @param userId
+     * @return
+     */
+    public List<Map<String,Object>> selectTeacherStudent(@Param("userId")String userId);
 }

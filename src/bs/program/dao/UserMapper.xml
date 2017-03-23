@@ -24,6 +24,15 @@
 		<result column="userName" property="userName" javaType="String"/>
 		<result column="className" property="className" javaType="String"/>
 	</resultMap>
+
+
+	<resultMap id="rts" type="java.util.HashMap">
+		<result column="id" property="id" javaType="String"/>
+		<result column="userName" property="userName" javaType="String"/>
+		<result column="phone" property="phone" javaType="String"/>
+	</resultMap>
+
+
 	<!-- 查询所有用户 -->
 	<select id="lists" resultType="bs.program.bean.User">
 		select * from users
@@ -122,7 +131,7 @@
 	</delete>
 	
 	<select id="selectRole" parameterType="String" resultType="String">
-		select ur.roleId from users u left join User_Role ur on u.id=ur.userId where u.id=#{id} 
+		select ur.roleId from users u left join User_Role ur on u.id=ur.userId where u.id=#{id}
 	</select>
 
 	<select id="findUserByIdddd" parameterType="String" resultMap="byUserId">
@@ -132,4 +141,28 @@
 	<update id="userUpdatePwd" parameterType="String">
 		UPDATE users SET password=#{password} WHERE id=#{id}
 	</update>
+
+	<select id="selectTeacherSubject" parameterType="String" resultType="bs.program.bean.User">
+		select * from users WHERE id=#{userId}
+	</select>
+
+	<select id="selectTeacherStudent" parameterType="String" resultMap="rts">
+		SELECT
+			id,
+			userName,
+			phone
+		FROM
+			users
+		WHERE
+			id IN(
+				SELECT
+					sc.studentId
+				FROM
+					users u
+				LEFT JOIN teacher_course tc ON u.id = tc.teacherId
+				LEFT JOIN student_course sc ON tc.courseId = sc.teacherCourseId
+				WHERE
+					u.id =#{userId}
+			)
+	</select>
 </mapper>

@@ -24,17 +24,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<c:if test="${sessionScope.roleId=='1'}">
 		<div title="基础数据" data-options="href:'jsp/menuTree.jsp?module=1'"></div>
 		<div title="排课管理" data-options="href:'jsp/menuTree.jsp?module=2'"></div>
-		<div title="课程信息" data-options="href:'jsp/menuTree.jsp?module=3'"></div>
-		<div title="学生选课" data-options="href:'jsp/menuTree.jsp?module=4'"></div>
 	</c:if>
 	<c:if test="${sessionScope.roleId=='2'}">
 		
-		<div title="课程信息" data-options="href:'jsp/menuTree.jsp?module=3'"></div>
-		<div title="学生选课" data-options="href:'jsp/menuTree.jsp?module=4'"></div>
+		<div title="选课" data-options="href:'jsp/menuTree.jsp?module=1'"></div>
+		<div title="个人信息" data-options="href:'jsp/menuTree.jsp?module=3'"></div>
 	</c:if>
 	<c:if test='${sessionScope.roleId=="3"}'>
-		<div title="课程信息" data-options="href:'jsp/menuTree.jsp?module=3'"></div>
-		<div title="学生选课" data-options="href:'jsp/menuTree.jsp?module=4'"></div>
+		<div title="课程信息" data-options="href:'jsp/menuTree.jsp?module=1'"></div>
+		<div title="个人信息" data-options="href:'jsp/menuTree.jsp?module=3'"></div>
 	</c:if>
 </div>
 </body>

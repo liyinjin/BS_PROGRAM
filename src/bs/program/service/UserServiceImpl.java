@@ -92,4 +92,19 @@ public class UserServiceImpl implements UserService{
 	public Integer userUpdatePwd(String id, String password) {
 		return userDao.userUpdatePwd(id,password);
 	}
+
+	@Override
+	public List<Map<String,Object>> selectTeacherSubject(String userId){
+		return userDao.selectTeacherSubject(userId);
+	}
+
+	/**
+	 *查询教师自己课程选课学生
+	 * @param userId
+	 * @return
+	 */
+	@Override
+	public List<Map<String,Object>> selectTeacherStudent(String userId){
+		return userDao.selectTeacherStudent(userId);
+	}
 }
