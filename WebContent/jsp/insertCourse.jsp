@@ -31,15 +31,18 @@
         <table id="insertCourseTable">
             <tr>
                 <td>课程编号</td>
-                <td><input type="text" name="id"></td>
+
+                <td><input type="text" name="id" ></td>
             </tr>
             <tr>
                 <td>课程名称</td>
-                <td><input type="text" name="name"></td>
+
+                <td><input class="form-control" type="text" name="name"></td>
             </tr>
             <tr>
                 <td>课程学分</td>
-                <td><input type="text" name="allScores"></td>
+
+                <td><input class="form-control" type="text" name="allScores"></td>
             </tr>
         </table>
     </form>

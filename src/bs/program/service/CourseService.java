@@ -68,4 +68,11 @@ public interface CourseService {
      * @return
      */
     public List<Map<String,Object>> queryScores(String userId);
+
+    /**
+     * 完成发布课程
+     * @param id
+     * @return
+     */
+    public Integer updateCourseState(String id);
 }

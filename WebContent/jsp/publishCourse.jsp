@@ -50,8 +50,8 @@
                     },
                     {field:'insert',title:'发布',
                         formatter:function () {
-                            var ssttrr='<button id="buu" type="button" onclick="publishCc();">确定</button>';
-                            return ssttrr;
+                            var ab='<button id="buu" type="button" onclick="publishCc();">确定</button>';
+                            return ab;
                         }
                     }
 
@@ -100,7 +100,7 @@
             }
             $.ajax({
                 type:'post',
-                url:'publish/publishCourseComplete',
+                url:'course/updateCourseState',
                 data:{'id':pp.id},
                 success:function (data) {
                     var json=data.i;
@@ -112,6 +112,7 @@
                 }
             })
         }
+
     </script>
     <form id="publishCourseForm" action="" method="post">
         <table class="easyui-datagrid" id="publishTable">

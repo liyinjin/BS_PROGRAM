@@ -23,6 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		function exect(){
 			localhost.href='login.html';
 		}
+		function ai() {
+            document.getElementById("in").hidden;
+        }
 	</script>
   <div data-options="region:'north',border:false" class="header">
     <div class="logo">
@@ -37,11 +40,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
   </div>
   <div data-options="region:'west',split:true,title:'系统功能',href:'jsp/menu.jsp'" style="width:150px;"></div>
-  <div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
+  <div data-options="region:'east',split:true,collapsed:true,title:'East'" >
+    <input type="image" src="img/11.jpg" >
+    east region</div>
   <div data-options="region:'south',border:false" class="footer" style="height:40px;line-height:40px;">
     学生选课系统
   </div>
   <div data-options="region:'center'">
+    <%--<div><input id="in" onclick="ai()" type="image" src="img/11.jpg" width="1000px" height="1000px"></div>--%>
     <div class="easyui-tabs" id="maintabs" fit="true"></div>
   </div>
 </body>

@@ -1,5 +1,6 @@
 package bs.program.controller;
 
+import bs.program.bean.Course;
 import bs.program.bean.User;
 import bs.program.dao.CourseDao;
 import bs.program.service.CourseService;
@@ -110,11 +111,27 @@ public class CourseController {
         return map;
     }
 
+
+
     @ResponseBody
     @RequestMapping(value ="/queryScores")
     public List<Map<String,Object>> queryScores(HttpServletRequest request){
         User user=(User)request.getSession().getAttribute("user");
         List<Map<String,Object>> list=courseService.queryScores(user.getId());
         return list;
+    }
+
+    @ResponseBody
+    @RequestMapping("/updateCourseState")
+    public Map<String,Object> updateCourseState(String id){
+        Map<String,Object> map=new HashMap<>();
+        Course c=courseDao.queryClassroomCourse(id);
+        Course cc=courseDao.queryTeacherCourse(id);
+        if ("".equals(c.getId())||"".equals(cc.getId())){
+            map.put("i",0);
+        }
+        Integer i=courseService.updateCourseState(id);
+        map.put("i",i);
+        return map;
     }
 }

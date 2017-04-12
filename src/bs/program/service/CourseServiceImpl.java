@@ -65,4 +65,9 @@ public class CourseServiceImpl implements CourseService{
     public List<Map<String, Object>> queryScores(String userId) {
         return coursedao.queryScores(userId);
     }
+
+    @Override
+    public Integer updateCourseState(String id) {
+        return coursedao.updateCourseState(id);
+    }
 }

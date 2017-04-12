@@ -52,6 +52,7 @@
         });
     });
 
+
     function insertCourseTeacher() {
         var v=$("#teacherTable").datagrid("getSelected");
         var ii=document.getElementById("inpu");
@@ -63,8 +64,8 @@
             $.ajax({
                 type:'post',
                 url:'publish/insertCourseTeacher',
-                data:{'id':ii.value,'teacherId':r.id},
-                success:function (data) {
+                data:{'id':ii.value,'teacherId':v.id},
+               success:function (data) {
                     var json=data.i;
                     if (json==1){
                         alert("添加教师成功");

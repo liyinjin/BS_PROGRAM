@@ -1,5 +1,6 @@
 package bs.program.dao;
 
+import bs.program.bean.Course;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -87,4 +88,14 @@ public interface CourseDao {
      * @return
      */
     public List<Map<String,Object>> queryScores(@Param("userId")String userId);
+
+    /**
+     * 完成发布课程
+     * @param id
+     * @return
+     */
+    public Integer updateCourseState(@Param("id")String id);
+
+    public Course queryClassroomCourse(@Param("id")String id);
+    public Course queryTeacherCourse(@Param("id")String id);
 }

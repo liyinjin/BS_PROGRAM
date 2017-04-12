@@ -87,4 +87,16 @@
     <select id="queryScores" parameterType="String" resultMap="rq">
         select DISTINCT c.name,c.allScores from student_course sc left join course c on c.id=sc.teacherCourseId WHERE sc.studentId=#{userId}
     </select>
+
+    <select id="queryClassroomCourse" parameterType="String" resultType="bs.program.bean.Course">
+        select c.* from `course` c left join `course_classesroom` cc on c.id=cc.courseId where c.id=#{id}
+    </select>
+
+    <select id="queryTeacherCourse" parameterType="String" resultType="bs.program.bean.Course">
+        select c.* from `course` c left join `teacher_course` cc on c.id=cc.courseId where c.id=#{id}
+    </select>
+
+    <update id="updateCourseState" parameterType="String">
+        update course set state=1 where id=#{id}
+    </update>
 </mapper>
