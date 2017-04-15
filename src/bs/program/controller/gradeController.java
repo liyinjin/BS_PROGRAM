@@ -23,13 +23,12 @@ public class gradeController {
     public gradeService gradeService;
     @Autowired
     public UserService userService;
-
     @ResponseBody
     @RequestMapping(value = "/insertStudentGrade")
     public Map<String,Object> insertStudentGrade(String studentName, HttpServletRequest request, Integer grade){
         Map<String,Object> map=new HashMap<>();
         User user=(User)request.getSession().getAttribute("user");
-        User us= (User) userService.selectTeacherSubject(user.getId());
+        User us=gradeService.selectSubject(user.getId());
         Integer i=gradeService.insertStudentGrade(studentName,us.getSubject(),grade);
         map.put("i",i);
         return map;

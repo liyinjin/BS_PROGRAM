@@ -121,9 +121,10 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/findUserById")
-    public List<Map<String,Object>> findUserById(String id){
+    public List<Map<String,Object>> findUserById(String id,HttpServletRequest request){
         Map<String, Object> map = new HashMap<String, Object>();
-        List<Map<String,Object>> listarray=userService.findUserById(id);
+        User user=(User)request.getSession().getAttribute("user");
+        List<Map<String,Object>> listarray=userService.findUserById(user.getId());
         return listarray;
     }
 

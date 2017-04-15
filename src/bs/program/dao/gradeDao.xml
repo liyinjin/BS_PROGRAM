@@ -10,4 +10,8 @@
     <insert id="insertStudentGrade" parameterMap="im">
         INSERT INTO grade(courseName,studentName,grade) VALUES (#{courseName},#{studentName},#{grade})
     </insert>
+
+    <select id="selectSubject" parameterType="String" resultType="bs.program.bean.User">
+        select * from users where id=#{id}
+    </select>
 </mapper>

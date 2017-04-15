@@ -30,11 +30,12 @@
 
         function inGrade() {
             var inpuuu=document.getElementById("inpuuu");
+            console.log(inpuuu);
             var grade=document.getElementById("grade");
                 $.ajax({
                     type:'post',
                     url:'grade/insertStudentGrade',
-                    data:{"name":inpu.value,"grade":grade.value},
+                    data:{"name":inpuuu.value,"grade":grade.value},
                     success:function (data) {
                         var json=data.i;
                         if (json==1){
